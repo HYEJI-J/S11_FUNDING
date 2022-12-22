@@ -3,33 +3,31 @@ package kh.s11.kd.project.model;
 import java.sql.Connection;
 import common.jdbc.JdbcTemplate;
 
-public class ProjectService {
-	private ProjectDao dao = new ProjectDao();
-//	insert - µÓ∑œ
-	public int insert(ProjectVo vo) {
+public class FuturesService {
+	private FuturesDao dao = new FuturesDao();
+//	insert - Îì±Î°ù
+	public int insert(FuturesVo vo) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.insert(conn, vo);
 		JdbcTemplate.close(conn);
 		return result;
 	}
-//	update - ºˆ¡§
-	public int update(ProjectVo vo, int pno ) {
+//	update - ÏàòÏ†ï
+	public int update(FuturesVo vo, int fno) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.update(conn, vo, pno);
+		result = dao.update(conn, vo, fno);
 		JdbcTemplate.close(conn);
 		return result;
 	}
-//	delete  - ªË¡¶
-	public int delete(int pno) {
+//	delete  - ÏÇ≠Ï†ú
+	public int delete(int fno) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.delete(conn, pno);
+		result = dao.delete(conn, fno);
 		JdbcTemplate.close(conn);	
 		return result;
 	}
-	
-	
 
 }

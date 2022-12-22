@@ -1,36 +1,45 @@
 package kh.s11.kd.project.model;
 
-public class ProjectVo {
+import java.sql.Date;
 
-//	CREATE TABLE "PROJECT" (
-//			"PNO"	NUMBER		NOT NULL,
-//			"CATEGORYNUM2"	NUMBER		NOT NULL,
-//			"PLTITLE"	VARCHAR2(100)		NOT NULL,
-//			"PSTITLE"	VARCHAR2(20)		NOT NULL,
-//			"CATEGORYNUM"	NUMBER		NOT NULL,
-//			"TGMONEY"	NUMBER		NOT NULL,
-//			"SDAY"	DATE		NOT NULL,
-//			"FDAY"	DATE		NOT NULL,
-//			"PERIOD"	DATE		NOT NULL,
-//			"DREMAIN"	NUMBER		NOT NULL,
-//			"PERMISSION"	CHAR(1)		NOT NULL
-//		);
+public class ProjectVo {
+//	이름         널?       유형            
+//			---------- -------- ------------- 
+//			PNO        NOT NULL NUMBER        
+//			CNO        NOT NULL NUMBER        
+//			CATENO     NOT NULL CHAR(20)      
+//			PJTITLE    NOT NULL VARCHAR2(100) 
+//			PJSTITLE   NOT NULL VARCHAR2(20)  
+//			PJSUM      NOT NULL VARCHAR2(200) 
+//			PJTAG               VARCHAR2(500) 
+//			TGMONEY    NOT NULL NUMBER        
+//			SDAY       NOT NULL DATE          
+//			FDAY       NOT NULL DATE          
+//			TDAY       NOT NULL DATE          
+//			PERMISSION NOT NULL CHAR(1)      
 	private int pno;
-	private int categorynum2;
-	private String pltitle;
-	private String pstitle;
-	private int categorynum;
-	private int tgmoney;
-	private int sday;
-	private int fday;
-	private int period;
-	private int dremain;
+	private int cno;
+	private String cateno;
+	private String pjtitle;
+	private String pjstitle;
+	private String pjsum;
+	private String pjtag;
+	private int pgmoney;
+	private Date sday;
+	private Date fday;
+	private Date tday;
 	private String permission;
+	
+	
+	
+	public ProjectVo() {
+		super();
+	}
 	@Override
 	public String toString() {
-		return "ProjectVo [pno=" + pno + ", categorynum2=" + categorynum2 + ", pltitle=" + pltitle + ", pstitle="
-				+ pstitle + ", categorynum=" + categorynum + ", tgmoney=" + tgmoney + ", sday=" + sday + ", fday="
-				+ fday + ", period=" + period + ", dremain=" + dremain + ", permission=" + permission + "]";
+		return "ProjectVo [pno=" + pno + ", cno=" + cno + ", cateno=" + cateno + ", pjtitle=" + pjtitle + ", pjstitle="
+				+ pjstitle + ", pjsum=" + pjsum + ", pjtag=" + pjtag + ", pgmoney=" + pgmoney + ", sday=" + sday
+				+ ", fday=" + fday + ", tday=" + tday + ", permission=" + permission + "]";
 	}
 	public int getPno() {
 		return pno;
@@ -38,59 +47,65 @@ public class ProjectVo {
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public int getCategorynum2() {
-		return categorynum2;
+	public int getCno() {
+		return cno;
 	}
-	public void setCategorynum2(int categorynum2) {
-		this.categorynum2 = categorynum2;
+	public void setCno(int cno) {
+		this.cno = cno;
 	}
-	public String getPltitle() {
-		return pltitle;
+	public String getCateno() {
+		return cateno;
 	}
-	public void setPltitle(String pltitle) {
-		this.pltitle = pltitle;
+	public void setCateno(String cateno) {
+		this.cateno = cateno;
 	}
-	public String getPstitle() {
-		return pstitle;
+	public String getPjtitle() {
+		return pjtitle;
 	}
-	public void setPstitle(String pstitle) {
-		this.pstitle = pstitle;
+	public void setPjtitle(String pjtitle) {
+		this.pjtitle = pjtitle;
 	}
-	public int getCategorynum() {
-		return categorynum;
+	public String getPjstitle() {
+		return pjstitle;
 	}
-	public void setCategorynum(int categorynum) {
-		this.categorynum = categorynum;
+	public void setPjstitle(String pjstitle) {
+		this.pjstitle = pjstitle;
 	}
-	public int getTgmoney() {
-		return tgmoney;
+	public String getPjsum() {
+		return pjsum;
 	}
-	public void setTgmoney(int tgmoney) {
-		this.tgmoney = tgmoney;
+	public void setPjsum(String pjsum) {
+		this.pjsum = pjsum;
 	}
-	public int getSday() {
+	public String getPjtag() {
+		return pjtag;
+	}
+	public void setPjtag(String pjtag) {
+		this.pjtag = pjtag;
+	}
+	public int getPgmoney() {
+		return pgmoney;
+	}
+	public void setPgmoney(int pgmoney) {
+		this.pgmoney = pgmoney;
+	}
+	public Date getSday() {
 		return sday;
 	}
-	public void setSday(int sday) {
+	public void setSday(Date sday) {
 		this.sday = sday;
 	}
-	public int getFday() {
+	public Date getFday() {
 		return fday;
 	}
-	public void setFday(int fday) {
+	public void setFday(Date fday) {
 		this.fday = fday;
 	}
-	public int getPeriod() {
-		return period;
+	public Date getTday() {
+		return tday;
 	}
-	public void setPeriod(int period) {
-		this.period = period;
-	}
-	public int getDremain() {
-		return dremain;
-	}
-	public void setDremain(int dremain) {
-		this.dremain = dremain;
+	public void setTday(Date tday) {
+		this.tday = tday;
 	}
 	public String getPermission() {
 		return permission;
@@ -98,4 +113,7 @@ public class ProjectVo {
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
+	
+	
+
 }

@@ -1,10 +1,12 @@
 package kh.s11.kd.member.model;
 
+import static common.jdbc.JdbcTemplate.close;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import common.jdbc.JdbcTemplate;
+import java.sql.SQLException;
 
 public class MemberDao {
 		
@@ -24,30 +26,51 @@ public class MemberDao {
 				return result;
 			}
 			
-			public MemberVo login(Connection conn, String mid, String mpwd){
-				MemberVo vo = null;
-				String query = "select id,name,email,address,phonenum from member where id=? and pwd=?";
+			public MemberVo login(Connection con,String id, String pwd) {
+				MemberVo m = null;
 				PreparedStatement pstmt = null;
-				ResultSet rs = null;
+				ResultSet rset = null;
+				String query = "SELECT*FROM TEST_MEMBER WHERE ID=? AND PWD=?";
 				try {
-					pstmt = conn.prepareStatement(query);
-					pstmt.setString(1, mid);
-					pstmt.setString(2, mpwd);
-					rs = pstmt.executeQuery();
-					if(rs.next()) {
-						vo = new MemberVo();
-						vo.setId(rs.getString("id"));
-						vo.setName(rs.getString("name"));
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
+					rset = pstmt.executeQuery();
+					if(rset.next()) {
+						m = new MemberVo();
+						m.setId(rset.getString("ID"));
+						m.setPwd(rset.getString("PWD"));
+						m.setName(rset.getString("NAME"));
+						m.setEmail(rset.getString("EMAIL"));
 					}
-				}catch (Exception e) {
+				}catch(SQLException e) {
 					e.printStackTrace();
 				}finally {
-					JdbcTemplate.close(rs);
-					JdbcTemplate.close(pstmt);
+					close(rset);
+					close(pstmt);
 				}
+				return m;
+			
+		}
+			public int dupIdChk(Connection con, String id) {
+				PreparedStatement pstmt = null;
+				ResultSet rset = null;
 				
-				
-				return vo;
-
+				int result = 0;
+				String query = "SELECT COUNT(*)FROM MEMBER  WHERE ID=?";
+				try {
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, id);
+					rset = pstmt.executeQuery();
+					if(rset.next()){
+						result=rset.getInt(1);
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}finally {
+					close(rset);
+					close(pstmt);
+				}
+					return result;
 			}
 }

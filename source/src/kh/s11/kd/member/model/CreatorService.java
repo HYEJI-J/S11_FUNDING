@@ -1,35 +1,33 @@
-package kh.s11.kd.project.model;
+package kh.s11.kd.member.model;
 
 import java.sql.Connection;
+
 import common.jdbc.JdbcTemplate;
 
-public class ProjectService {
-	private ProjectDao dao = new ProjectDao();
-//	insert - µÓ∑œ
-	public int insert(ProjectVo vo) {
+public class CreatorService {
+	private CreatorDao dao = new CreatorDao();
+//	insert - Îì±Î°ù
+	public int insert(CreatorVo vo) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
 		result = dao.insert(conn, vo);
 		JdbcTemplate.close(conn);
 		return result;
 	}
-//	update - ºˆ¡§
-	public int update(ProjectVo vo, int pno ) {
+//	update - ÏàòÏ†ï
+	public int update(CreatorVo vo, int cno ) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.update(conn, vo, pno);
+		result = dao.update(conn, vo, cno);
 		JdbcTemplate.close(conn);
 		return result;
 	}
-//	delete  - ªË¡¶
-	public int delete(int pno) {
+//	delete  - ÏÇ≠Ï†ú
+	public int delete(int cno) {
 		int result = 0;
 		Connection conn = JdbcTemplate.getConnection();
-		result = dao.delete(conn, pno);
+		result = dao.delete(conn, cno);
 		JdbcTemplate.close(conn);	
 		return result;
 	}
-	
-	
-
 }
