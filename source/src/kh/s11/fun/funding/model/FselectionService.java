@@ -1,4 +1,4 @@
-package kh.s11.fun.fundingt.model;
+package kh.s11.fun.funding.model;
 
 import static common.jdbc.JdbcTemplate.close;
 import static common.jdbc.JdbcTemplate.commit;

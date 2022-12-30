@@ -6,11 +6,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import kh.s11.fun.member.model.MemberService;
+import kh.s11.fun.member.model.MemberVo;
 
 /**
  * Servlet implementation class LoginDoController
  */
-@WebServlet("/LoginDoController")
+@WebServlet("/login.do")
 public class LoginDoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -19,23 +23,22 @@ public class LoginDoController extends HttpServlet {
      */
     public LoginDoController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		
+		MemberService service = new MemberService();
+		MemberVo m = service.login(id, pwd);
+		if(m !=null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", m);
+			response.sendRedirect(request.getContextPath()+"/main");
+		}else {
+			response.sendRedirect(request.getContextPath()+"/login");
+			System.out.println("로그인 실패");
+		}
 
+	}
 }

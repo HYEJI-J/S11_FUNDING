@@ -1,0 +1,50 @@
+/* 네이버값 */
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul{
+    margin: 0;
+    padding: 0;
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+html, body{
+    height: 100%;
+    font-size: 14px;
+}
+/* 텀블러값 */
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #f6f5f5;
+    font-family: 'SpoqaHanSans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+    display: block;
+    background-color: #fff;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+button,input{
+    border-radius: 0;
+    border: none;
+    background: 0 0;
+    cursor: pointer;
+    appearance: none;
+    outline: 0;
+    text-decoration: none;
+    vertical-align: middle;
+}
+li {
+    list-style: none;
+}
+legend {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+}

@@ -1,4 +1,4 @@
-package kh.s11.fun.fundingt.model;
+package kh.s11.fun.funding.model;
 
 public class FundingVo {
 //	FUNNO     NOT NULL NUMBER        

@@ -30,7 +30,7 @@ public class MemberDao {
 				MemberVo m = null;
 				PreparedStatement pstmt = null;
 				ResultSet rset = null;
-				String query = "SELECT*FROM TEST_MEMBER WHERE ID=? AND PWD=?";
+				String query = "SELECT * FROM MEMBER WHERE ID=? AND PWD=?";
 				try {
 					pstmt = con.prepareStatement(query);
 					pstmt.setString(1, id);
@@ -39,7 +39,7 @@ public class MemberDao {
 					if(rset.next()) {
 						m = new MemberVo();
 						m.setId(rset.getString("ID"));
-						m.setPwd(rset.getString("PWD"));
+//						m.setPwd(rset.getString("PWD"));
 						m.setName(rset.getString("NAME"));
 						m.setEmail(rset.getString("EMAIL"));
 					}
@@ -49,6 +49,7 @@ public class MemberDao {
 					close(rset);
 					close(pstmt);
 				}
+				System.out.println("로그인된정보 : "+ m);
 				return m;
 			
 		}
@@ -57,7 +58,7 @@ public class MemberDao {
 				ResultSet rset = null;
 				
 				int result = 0;
-				String query = "SELECT COUNT(*)FROM MEMBER  WHERE ID=?";
+				String query = "SELECT COUNT(*) FROM MEMBER  WHERE ID=?";
 				try {
 					pstmt = con.prepareStatement(query);
 					pstmt.setString(1, id);

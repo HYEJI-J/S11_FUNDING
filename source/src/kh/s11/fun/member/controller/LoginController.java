@@ -25,7 +25,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewPath="web/view/member/login.jsp";
+		String viewPath="WEB-INF/view/member/login.jsp";
 		request.getRequestDispatcher(viewPath).forward(request, response);
 	}
 }
